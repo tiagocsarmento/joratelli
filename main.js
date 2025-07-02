@@ -92,7 +92,12 @@ textureLoader.load(hdrTextureURL, (texture) => {
 scene.background = new THREE.Color(1,1,1);
 
 camera.add(listener);
-camera.position.set(0, 2, 4);
+if (camera.aspect < 1.0) {
+	camera.position.set(0, 4, 8);
+} else {
+	camera.position.set(0, 2, 4);
+}
+
 
 setControls(controls, 3, 20, -1, 10);
 controls.update();
